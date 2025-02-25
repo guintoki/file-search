@@ -41,7 +41,7 @@ export function FileViewer({ file, onClose }: FileViewerProps) {
                 })
                 .catch(() => {
                   docContainerRef.current!.innerText =
-                    "Erro ao renderizar o documento.";
+                    "Error rendering document.";
                 });
             }
           };
@@ -49,8 +49,7 @@ export function FileViewer({ file, onClose }: FileViewerProps) {
         })
         .catch(() => {
           if (docContainerRef.current) {
-            docContainerRef.current.innerText =
-              "Erro ao renderizar o documento.";
+            docContainerRef.current.innerText = "Error rendering document.";
           }
         });
     }
@@ -82,8 +81,7 @@ export function FileViewer({ file, onClose }: FileViewerProps) {
         })
         .catch(() => {
           if (excelContainerRef.current) {
-            excelContainerRef.current.innerText =
-              "Erro ao renderizar o arquivo Excel.";
+            excelContainerRef.current.innerText = "Error rendering Excel file.";
           }
         });
     }
@@ -145,7 +143,7 @@ export function FileViewer({ file, onClose }: FileViewerProps) {
         {isDoc || isExcel ? (
           <input
             type="text"
-            placeholder="Buscar palavra-chave..."
+            placeholder="Search keyword..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full p-2 border rounded mb-4"
@@ -168,7 +166,7 @@ export function FileViewer({ file, onClose }: FileViewerProps) {
             className="w-full h-[70vh] overflow-auto border p-4"
           ></div>
         ) : (
-          <p>Tipo de arquivo não suportado para visualização.</p>
+          <p>File type not supported for preview.</p>
         )}
       </div>
     </div>

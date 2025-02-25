@@ -3,12 +3,10 @@
 import { useState } from "react";
 import { FileUpload } from "@/components/file-upload";
 import { FileList } from "@/components/file-list";
-import { SearchBar } from "@/components/search-bar";
 import { FileViewer } from "@/components/file-viewer";
 
 export default function Home() {
   const [files, setFiles] = useState<File[]>([]);
-  const [searchQuery, setSearchQuery] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleFilesUploaded = (newFiles: File[]) => {
@@ -17,11 +15,6 @@ export default function Home() {
 
   const handleRemoveFile = (fileToRemove: File) => {
     setFiles((prev) => prev.filter((file) => file !== fileToRemove));
-  };
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    // TODO: Implement search functionality
   };
 
   const handleReadFile = (file: File) => {
@@ -39,7 +32,6 @@ export default function Home() {
       </h1>
 
       <FileUpload onFilesUploaded={handleFilesUploaded} />
-      {files.length > 0 && <SearchBar onSearch={handleSearch} />}
 
       <FileList
         files={files}
